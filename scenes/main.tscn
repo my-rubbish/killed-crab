@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://df5b2kvqfxm8p"]
+
+[ext_resource type="Script" uid="uid://du1qs2161k0ad" path="res://scripts/main.gd" id="1_0s0qr"]
+[ext_resource type="Texture2D" uid="uid://du4w7sup7uh4t" path="res://textures/LEGF1.png" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://doubcf3y82omb" path="res://textures/LEGF2.png" id="3_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://ccjj4he4v6gtl" path="res://textures/LEGB1.png" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://crspjl8k8sk6b" path="res://textures/LEGB2.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://0dbij2nh12x4" path="res://textures/left_claw.png" id="6_choun"]
+[ext_resource type="Texture2D" uid="uid://dem6gwepf5tbv" path="res://textures/right_claw.png" id="7_ya4ey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(192, 128)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0s0qr")
+
+[node name="CrabContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 96.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crab" type="Control" parent="CrabContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LEGF1" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(41, 64)
+texture = ExtResource("2_0wfyh")
+offset = Vector2(55, 0)
+
+[node name="LEGF2" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(156, 64)
+texture = ExtResource("3_o6xl0")
+offset = Vector2(-60, 0)
+
+[node name="LEGB1" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(48, 69)
+texture = ExtResource("4_tipki")
+offset = Vector2(48, -5)
+
+[node name="LEGB2" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(151, 69)
+texture = ExtResource("5_85g3d")
+offset = Vector2(-55, -5)
+
+[node name="CrabBody" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(96, 64)
+
+[node name="CrabEyes" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(96, 64)
+
+[node name="LeftClaw" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(144, 72)
+texture = ExtResource("6_choun")
+offset = Vector2(-48, -8)
+
+[node name="RightClaw" type="Sprite2D" parent="CrabContainer/Crab"]
+texture_filter = 1
+position = Vector2(48, 72)
+texture = ExtResource("7_ya4ey")
+offset = Vector2(48, -8)
+
+[node name="ClickArea" type="Area2D" parent="CrabContainer/Crab"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrabContainer/Crab/ClickArea"]
+position = Vector2(96, 64)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ParticleContainer" type="Control" parent="CrabContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 23.0
+text = "点击次数: 0"
+horizontal_alignment = 1
