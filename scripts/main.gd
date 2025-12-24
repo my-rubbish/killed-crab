@@ -948,7 +948,9 @@ func create_context_menu():
 	# 创建右键菜单
 	context_menu = PopupMenu.new()
 	add_child(context_menu)
-	
+	var theme := Theme.new()
+	theme.set_font_size("font_size", "PopupMenu", 24)
+	context_menu.theme = theme
 	# 添加菜单项
 	context_menu.add_item("复活螃蟹", 0)
 	context_menu.add_separator()
